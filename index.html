@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BJUTAPP</title>
+    <style>
+        /* 重置默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --text-secondary: #666666;
+            --nav-bg: #2563eb;
+            --nav-text: #ffffff;
+            --footer-bg: #1f2937;
+            --footer-text: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #3b82f6;
+                --primary-hover: #60a5fa;
+                --bg-color: #1a1a1a;
+                --card-bg: #2d2d2d;
+                --text-color: #e5e7eb;
+                --text-secondary: #9ca3af;
+                --nav-bg: #1e3a8a;
+                --nav-text: #ffffff;
+                --footer-bg: #111827;
+                --footer-text: #ffffff;
+                --shadow-color: rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background-color: var(--nav-bg);
+            color: var(--nav-text);
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: var(--nav-text);
+            text-decoration: none;
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a:hover {
+            color: #bfdbfe;
+        }
+
+        /* Hero 区域样式 */
+        .hero {
+            background: linear-gradient(to bottom, var(--nav-bg), var(--primary-color));
+            color: white;
+            padding: 5rem 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #f8fafc;
+        }
+
+        /* 功能特点区域样式 */
+        .features {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        /* 下载区域样式 */
+        .download {
+            background-color: var(--bg-color);
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .download h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0.5rem;
+        }
+
+        .btn-download:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-github {
+            background-color: var(--footer-bg);
+            color: white;
+            border-radius: 0.5rem;
+        }
+
+        .btn-github:hover {
+            background-color: #111827;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        footer a:hover {
+            color: #93c5fd;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">bjutapp</div>
+            <div class="nav-links">
+                <a href="./otpdb.html">OTPDB</a>
+                <a href="#features">功能</a>
+                <a href="#download">下载</a>
+                <a href="https://github.com/bjutapp/bjut">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main>
+        <section class="hero">
+            <h1>让校园生活更便捷</h1>
+            <p>BJUTAPP，第三方的日新工大，为提升体验而生</p>
+            <a href="#download" class="btn btn-primary">立即体验</a>
+        </section>
+
+        <!-- 功能特点 -->
+        <section id="features" class="features">
+            <h2>功能介绍</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>课程表</h3>
+                    <p>查看教务系统课表，界面清晰直观，快速查看每日课程安排</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>一卡通服务</h3>
+                    <p>查询一卡通余额、消费记录，支持支付码和充值，让校园消费更便捷</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📰</div>
+                    <h3>校园新闻资讯</h3>
+                    <p>及时获取学校动态、通知公告等重要信息</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>WEBVPN集成</h3>
+                    <p>无缝接入校园网络服务，随时随地访问校内资源，支持自动认证</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>VPN OTP功能</h3>
+                    <p>内置VPN动态密码管理，快速连接校园VPN服务，支持备份导入</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下载区域 -->
+        <section id="download" class="download">
+            <h2>下载方式 (v1.0)</h2>
+            <div class="download-buttons">
+                <a href="./1.0/app-universal-release.apk" class="btn btn-download">
+                    立即下载apk
+                </a>
+                <a href="https://github.com/bjutapp/bjut/releases" class="btn btn-github">
+                    去GitHub下载
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>Github@bjutapp 开源项目</p>
+    </footer>
+</body>
+</html>
